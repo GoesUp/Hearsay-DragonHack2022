@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <!--    <script src="jquery-3.6.0.min.js"></script>-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css" media="screen">
+
+
+    <title>Hearsay</title>
+
+    <!--    <link rel="stylesheet" href="style.css" media="screen">-->
+</head>
+
+<body>
+
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" href="#">Navbar</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"-->
+<!--                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+
+<!--        <div class="collapse navbar-collapse" id="navbarColor01">-->
+<!--            <ul class="navbar-nav me-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" href="#">Home-->
+<!--                        <span class="visually-hidden">(current)</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Features</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Pricing</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">About</a>-->
+<!--                </li>-->
+<!--                &lt;!&ndash;                <li class="nav-item dropdown">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       aria-haspopup="true" aria-expanded="false">Dropdown</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <div class="dropdown-menu">&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a class="dropdown-item" href="#">Action</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a class="dropdown-item" href="#">Separated link</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </li>&ndash;&gt;-->
+<!--            </ul>-->
+<!--            <form class="d-flex">-->
+<!--                <input class="form-control me-sm-2" type="text" placeholder="Search">-->
+<!--                <button class="btn btn-secondary btn-block my-2 my-sm-0" type="submit">Search</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<div class="container py-2 my-5">
+
+    <div>
+        <h1 style="display: inline-block; padding-right: 15px"><b>HearSay</b></h1>
+        <h3 style="display: inline-block">world's best automatic subtitle generator at your hands</h3>
+    </div>
+    <div class="row" style="padding: 1em">
+    </div>
+
+    <div class="row">
+
+        <!--        LEVA STRAN          -->
+        <div class="col-md-5 col-sm-12">
+            <div class="bs-component">
+                <form id="videoUploadForm">
+                    <div class="form-group">
+                        <input class="form-control" type="file" accept="video/*" name="file" id="formFile"
+                               onchange="selectedVideo(this);"/>
+                    </div>
+                    <div style="padding: 0.3em"></div>
+                    <button type="submit" class="btn btn-primary"><i style="padding-right: 15px" class="fa fa-arrow-up"></i>Upload video file</button>
+                </form>
+            </div>
+
+
+            <div class="bs-component">
+                <form id="detailsForm">
+
+                    <div style="padding: 1em"></div>
+                    <div class="form-group">
+                        <label for="lang">Select language</label>
+                        <select class="form-select" id="lang">
+                            <option>English</option>
+                            <option>English fancy</option>
+                            <option>McEnglish</option>
+                            <option>SpiderEnglish</option>
+                            <option>Ingliš</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div style="padding: 0.3em"></div>
+
+                        <legend class="mt-4">Choose your treatement</legend>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input srt_selector" name="optionsRadios"
+                                       id="optionsRadios1"
+                                       value="option1" checked>
+                                Use only AI generated speech
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input srt_selector" name="optionsRadios"
+                                       id="optionsRadios2"
+                                       value="option2">
+                                Use pre-prepared script
+                            </label>
+                        </div>
+
+                        <div class="form-check disabled">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input srt_selector" name="optionsRadios"
+                                       id="optionsRadios3"
+                                       value="option3">
+                                Use SRT file
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="to-hide2" id="to-hide2" style="display: none">
+                        <label for="exampleTextarea">Here you can write your text:</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="3" name="script"
+                                  spellcheck="false"></textarea>
+                    </div>
+
+                    <div class="to-hide3" id="to-hide3" style="display: none">
+                        <input class="form-control" type="file" accept="srt" name="subtitle_file" id="uploadSubtitles"/>
+                    </div>
+
+                    <div style="padding: 0.3em"></div>
+                    <button type="submit" class="btn btn-primary"><i style="padding-right: 15px" class="fa fa-star"></i>Do your magic</button>
+
+                </form>
+
+            </div>
+        </div>
+
+        <!--        DESNA STRAN         -->
+        <div class="col-md-7 col-sm-12">
+            <div id="putVideoHere"></div>
+
+            <div style="padding: 0.3em"></div>
+            <button type="submit" class="btn btn-primary"><i style="padding-right: 15px" class="fa fa-download"></i>Download</button>
+            
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal"><i style="padding-right: 15px" class="fa fa-info"></i>Details</button>
+          
+            &nbsp;&nbsp;&nbsp;<div style="font-size: 120%; color: #188505; display: inline-block; font-weight: bold">Accuracy: 96.2 %</div>
+            <!--        </div>-->
+        </div>
+
+
+        <div class="container">
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content" style="padding:20px">
+                
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Timestaps and subtitles</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    
+                  </div>
+                  
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div id="subs" style="width:100%;line-height:1.5em;padding:5px;display:block;">
+                  </div>    
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    var test = 
+    [["00:00:00-00:00:02", "prvi stavekprvi stavekprvi stavekprvi stavekprvi stavekprvi stavek"], ["00:00:02-00:00:04", "drugi stavek"],
+    ["00:00:04-00:00:06", "tretji stavek"], ["00:00:06-00:00:08", "četrti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"],
+    ["00:00:08-00:00:10", "peti stavek"], ["00:00:10-00:00:12", "šesti stavek"] ]
+
+function make_table(arr) {
+    let tabela_div = document.getElementById("subs");
+
+    var a = test;
+    var html = "<table>";
+    for(var i in a){
+        html += "<tr>";
+        for(var j in a[i])
+        {
+            if(j == 0) {
+                html += "<td width=30%>"+a[i][j]+"&nbsp&nbsp&nbsp;</td>";
+            
+            }
+            else {html += "<td>"+a[i][j]+"&nbsp&nbsp&nbsp;</td>";}
+        }
+            
+        html += "</tr>";
+    }
+    
+    html += "</table>";
+    tabela_div.innerHTML = html;
+}
+make_table(test);
+</script>
+<script>
+    function selectedVideo(self) {
+        var file = self.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            var src = e.target.result;
+            var video = document.getElementById("mainVideo");
+            var source = document.getElementById("source");
+
+            // source.setAttribute("src", src);
+            // video.load();
+            // video.play();
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+
+</script>
+<script>
+
+    var savedName;
+
+    $(document).ready(function () {
+        console.log("document ready");
+        $('#videoUploadForm').submit(function () {
+            console.log("juhu");
+            var form = $(this);
+            var formdata = false;
+            if (window.FormData) {
+                formdata = new FormData(form[0]);
+            }
+
+            var formAction = form.attr('action');
+            $.ajax({
+                url: 'http://localhost:8000/upload',
+                data: formdata ? formdata : form.serialize(),
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data, textStatus, jqXHR) {
+                    // Callback code
+                    var videoName = "http://localhost:8000/uploaded/" + data["file_name"];
+                    savedName = data["file_name"];
+
+                    console.log(data["file_name"]);
+
+                    $("#putVideoHere").append(`
+                    <video
+                        autoplay="false"
+                        id="mainVideo"
+                        class="video-js"
+                        controls
+                        preload="auto"
+                        width="640"
+                        height="364"
+                        poster="puscice.jpg"
+                    >`+ "<source src=\""+ videoName +"\">" + `
+                    </video>
+                    `);
+                }
+            });
+            return false;
+        });
+        $('#detailsForm').submit(function () {
+            console.log("juhu");
+            var form = $(this);
+            var formdata = false;
+            if (window.FormData) {
+                formdata = new FormData(form[0]);
+                // alert(formdata);
+            }
+            var fullUrl = 'http://localhost:8000/transcribe/' + savedName;
+            console.log(formdata);
+            if (formdata.get("script") !== undefined) {
+                fullUrl += "?script=" + formdata.get("script");
+            }
+
+            var formAction = form.attr('action');
+            $.ajax({
+                url: fullUrl,
+                data: formdata ? formdata : form.serialize(),
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data, textStatus, jqXHR) {
+                    // Callback code
+                    console.log(data);
+                    console.log(data["subtitle_name"])
+                    $("#putVideoHere video").remove();
+                    $("#putVideoHere").append(`
+                    <video
+                        autoplay="false"
+                        id="mainVideo"
+                        class="video-js"
+                        controls
+                        preload="auto"
+                        width="640"
+                        height="364"
+                        poster="puscice.jpg"
+                    >`+ "<source src=\""+ "http://localhost:8000/uploaded/" + savedName +"\">" + "<track kind=\"captions\" src=\""+ "http://localhost:8000/subtitle/" + data["subtitle_name"] + "\" srclang=\"en\" label=\"English\" default>" + `
+                    </video>
+                    `);
+                    // var videoName = "http://localhost:8000/uploaded/" + data["file_name"];
+                    // savedName = data["file_name"];
+                    //
+                    // console.log(data["file_name"]);
+                    //
+                    // $("#mainVideo").attr("src", videoName);
+                }
+            });
+            return false;
+        });
+    });
+
+    $(document).ready(function () {
+        console.log("preparing to send 2");
+        // $('#detailsForm').submit(function () {
+        //     console.log("juhu again");
+        //     var form = $(this);
+        //     var formdata = false;
+        //     if (window.FormData) {
+        //         formdata = new FormData(form[0]);
+        //     }
+        //
+        //     var formAction = form.attr('action');
+        //     $.ajax({
+        //         url: 'http://localhost:8000/transcribe/' + savedName,
+        //         data: formdata ? formdata : form.serialize(),
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         type: 'POST',
+        //         success: function (data, textStatus, jqXHR) {
+        //             // Callback code
+        //             // var videoName = "http://localhost:8000/uploaded/" + data["file_name"];
+        //             // savedName = data["file_name"];
+        //
+        //             // console.log(data["file_name"]);
+        //
+        //             // $("#mainVideo").attr("src", videoName);
+        //         }
+        //     });
+        //     return false;
+        // });
+    });
+
+
+    // funkcije, ki se izvedejo ob izbiri nacina
+    $(".srt_selector").on("change", function () {
+
+        let hide2 = document.getElementById("to-hide2");
+        let hide3 = document.getElementById("to-hide3");
+
+        hide2.style.display = "none";
+        hide3.style.display = "none";
+
+        if (this.id == "optionsRadios2") {
+            hide2.style.display = "block";
+        }
+        if (this.id == "optionsRadios3") {
+            hide3.style.display = "block";
+        }
+
+    });
+
+
+</script>
+<!--<button type="button">Naloži</button>-->
+
+
+
+  <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+</body>
+
+</html>

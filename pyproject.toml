@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "hearsay-python"
+version = "0.1.0"
+description = ""
+authors = ["GoesUp <33792369+GoesUp@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.77.1"
+uvicorn = "^0.17.6"
+python-multipart = "^0.0.5"
+requests = "^2.27.1"
+srt = "^3.5.2"
+google-cloud-translate = "^3.7.2"
+webvtt-py = "^0.4.6"
+pyenchant = "^3.2.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
