@@ -94,18 +94,19 @@ def srt_from_words(words):
 
 
 def cmp_beseda(value, target):  # uporabmo Levenstain iz pyenchant
-	value = value.replace(",", "").replace(".", "")
-	target = target.replace(",", "").replace(".", "")
-	
-	if((len(target) < 1) or (len(value) < 1)): #prazna beseda ->ni match
-		return 0
-		
-	levenstain = enchant.utils.levenshtein(value.lower(), target.lower())
-	error = levenstain / len(target)
-	error *= (1-(1.8**-len(target)))
+    value = value.replace(",", "").replace(".", "")
+    target = target.replace(",", "").replace(".", "")
 
-	#popravimo, da pri manjsih dolzinah je error manjsi.
-	return 1 - error
+    if ((len(target) < 1) or (len(value) < 1)):  # prazna beseda ->ni match
+        return 0
+
+    levenstain = enchant.utils.levenshtein(value.lower(), target.lower())
+    error = levenstain / len(target)
+    error *= (1 - (1.8 ** -len(target)))
+
+    # popravimo, da pri manjsih dolzinah je error manjsi.
+    return 1 - error
+
 
 def find_next_match(target, str_words, search_depth):
     best_match = 0
