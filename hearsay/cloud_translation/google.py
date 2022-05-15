@@ -2,9 +2,14 @@
 from google.cloud import translate
 
 
-# Initialize Translation client
-def translate_text(text="I wish you all the best with your presentations.", project_id="hearsay-python"):
-    """Translating Text."""
+def translate_text(text, project_id="hearsay-python"):
+    """
+    Translate the given text into some language (currently hardcoded to french :) ).
+
+    :param text: the text to translate
+    :param project_id: project ID of the google cloud project
+    :return: the translated text
+    """
 
     client = translate.TranslationServiceClient()
 
@@ -12,9 +17,6 @@ def translate_text(text="I wish you all the best with your presentations.", proj
 
     parent = f"projects/{project_id}/locations/{location}"
 
-    # Translate text from English to French
-    # Detail on supported types can be found here:
-    # https://cloud.google.com/translate/docs/supported-formats
     response = client.translate_text(
         request={
             "parent": parent,
@@ -27,7 +29,7 @@ def translate_text(text="I wish you all the best with your presentations.", proj
 
     # Display the translation for each input text provided
     for translation in response.translations:
-        print("Translated text: {}".format(translation.translated_text))
+        return translation
 
 
 if __name__ == '__main__':
